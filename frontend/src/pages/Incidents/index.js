@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { FiPower, FiTrash2 } from 'react-icons/fi';
 
@@ -24,6 +25,25 @@ export default function Incidents() {
         setIncidents(response.data);
       });
   }, [ongId]);
+
+  async function handleDeleteIncident(id) {
+    try {
+      await api.delete(`incidents/${id}`, {
+        headers: {
+          Authorization: ongId,
+        },
+      });
+
+      setIncidents(incidents.filter(incident => incident.id !== id));
+      toast.success('Caso removido com sucesso.', {
+        position: 'bottom-center',
+      });
+    } catch (err) {
+      toast.error('Erro ao deletar caso, tente novamente.', {
+        position: 'bottom-center',
+      });
+    }
+  }
 
   return (
     <div className="incidents-container">
@@ -58,7 +78,10 @@ export default function Incidents() {
               }).format(incident.value)}
             </p>
 
-            <button type="button">
+            <button
+              type="button"
+              onClick={() => handleDeleteIncident(incident.id)}
+            >
               <FiTrash2 size={20} color="#a8a8b3" />
             </button>
           </li>
