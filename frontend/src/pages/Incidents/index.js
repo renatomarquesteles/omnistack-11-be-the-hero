@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiPower, FiTrash2 } from 'react-icons/fi';
 
 import './styles.css';
@@ -10,6 +10,7 @@ import api from '../../services/api';
 
 export default function Incidents() {
   const [incidents, setIncidents] = useState([]);
+  const history = useHistory();
 
   const ongId = localStorage.getItem('ongId');
   const ongName = localStorage.getItem('ongName');
@@ -45,6 +46,12 @@ export default function Incidents() {
     }
   }
 
+  function handleLogout() {
+    localStorage.clear();
+
+    history.push('/');
+  }
+
   return (
     <div className="incidents-container">
       <header>
@@ -54,7 +61,7 @@ export default function Incidents() {
         <Link className="button" to="/incidents/new">
           Cadastrar novo caso
         </Link>
-        <button type="button">
+        <button type="button" onClick={handleLogout}>
           <FiPower size={18} color="#e02041" />
         </button>
       </header>
