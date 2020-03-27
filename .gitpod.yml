@@ -1,0 +1,13 @@
+image:
+  file: .gitpod.dockerfile
+ports:
+  - port: 3000
+  - port: 3333
+  - port: 19000-19002
+  - port: 5037
+  - port: 4040
+tasks:
+  - init: cd backend && yarn && cd ../frontend && yarn && cd ../mobile && yarn
+  - command: cd ../backend && npx knex migrate:latest && yarn start
+  - command: cd ../frontend && yarn start
+  - command: cd ../mobile && yarn start
