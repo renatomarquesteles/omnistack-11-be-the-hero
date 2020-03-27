@@ -7,7 +7,6 @@ ports:
   - port: 5037
   - port: 4040
 tasks:
-  - init: cd backend && yarn && cd ../frontend && yarn && cd ../mobile && yarn
-  - command: cd backend && npx knex migrate:latest && yarn start
-  - command: cd frontend && yarn start
-  - command: cd mobile && yarn start
+  - command: cd backend && yarn && npx knex migrate:latest && yarn start
+  - command: cd frontend && yarn && yarn start
+  - command: cd mobile && yarn && yarn start
