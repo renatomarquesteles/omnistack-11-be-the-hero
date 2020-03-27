@@ -8,6 +8,6 @@ ports:
   - port: 4040
 tasks:
   - init: cd backend && yarn && cd ../frontend && yarn && cd ../mobile && yarn
-  - command: cd ../backend && npx knex migrate:latest && yarn start
-  - command: cd ../frontend && yarn start
-  - command: cd ../mobile && yarn start
+  - command: cd backend && npx knex migrate:latest && yarn start
+  - command: cd frontend && yarn start
+  - command: cd mobile && yarn start
