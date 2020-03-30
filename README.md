@@ -51,7 +51,9 @@ API em Node.js com Express desenvolvida durante a Semana Omnistack 11 da Rockets
 `$ cd backend`
 3. Instale as depêndencias do projeto <br />
 `$ yarn`
-4. Rode a API <br />
+4. Rode as migrations para criar as tabelas no banco de dados
+`npx knex migrate:latest`
+5. Rode a API <br />
 `$ yarn start`
 
 > É possível testar todas as rotas da API através do Insomnia: <br/><br/><a href="https://insomnia.rest/run/?label=Be%20The%20Hero&uri=https%3A%2F%2Fraw.githubusercontent.com%2Frenatomarquesteles%2Fbe-the-hero%2Fmaster%2Fbackend%2FInsomnia_2020-03-27.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
