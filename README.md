@@ -51,7 +51,7 @@ API em Node.js com Express desenvolvida durante a Semana Omnistack 11 da Rockets
 `$ cd backend`
 3. Instale as depêndencias do projeto <br />
 `$ yarn`
-4. Rode as migrations para criar as tabelas no banco de dados
+4. Rode as migrations para criar as tabelas no banco de dados <br />
 `npx knex migrate:latest`
 5. Rode a API <br />
 `$ yarn start`
